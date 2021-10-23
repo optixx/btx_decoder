@@ -141,7 +141,7 @@ int process_BTX_data()
    int set, c1, c2, dct=0;
    
    c1 = layer2_getc();
-   if (c1<0) return;
+   if (c1<0) return 0;
 
    if(     c1>=0x00 && c1<=0x1f)  dct = primary_control_C0(c1);
    else if(c1>=0x80 && c1<=0x9f)  supplementary_control_C1(c1, 0);
@@ -152,7 +152,7 @@ int process_BTX_data()
       if( set == SUPP  &&  (c1 & 0x70) == 0x40 ) {   /* diacritical ??? */
 	 LOG("diacritical mark %d\n", c1 & 0x0f);
 	 c2 = layer2_getc();
-	 if (c2<0) return;
+	 if (c2<0) return 0;
 	 if(c2&0x60) c1 = (c1<<8) | c2;
 	 t.sshift = 0;
       }

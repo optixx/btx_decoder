@@ -29,6 +29,9 @@ int wpointer=0;
 //#define HOST "belgradstr.dyndns.org"
 #define PORT 20000 /* XXX the original port for CEPT is 20005 */
 
+
+void layer2_connect2(const char *host, const int port);
+
 void layer2_connect() 
 {
 	layer2_connect2(HOST,PORT);
